@@ -1,0 +1,24 @@
+{
+  "name": "create-phaser-app",
+  "version": "1.0.0",
+  "description": "Boilerplate generator for Phaser framework.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "generator",
+    "phaser",
+    "boilerplate"
+  ],
+  "author": "Patryk Poźniak",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.3.2",
+    "inquirer": "^5.1.0",
+    "npm": "^5.7.1"
+  },
+  "bin": {
+    "create-phaser-app": "./index.js"
+  }
+}
