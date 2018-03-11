@@ -1,0 +1,44 @@
+#! /usr/bin/env node
+'use strict';
+
+// const fs = require('fs');
+const program = require('commander');
+// const inquirer = require('inquirer');
+const chalk = require('chalk');
+const pkg = require('../package.json');
+
+// const lib = require('..');
+
+// const messages = lib.messages;
+// const createPhaserApp = lib.createPhaserApp;
+
+console.log(chalk`{cyan
+@@@#%#@%#@#%#@$#%#((#%@@@#((#    #@@&#%    @ @#@#%#@%#@%#@&%@#%@#%#@%@%#%@###@#@#$%#&@@
+@,           &%   (%%@@,  ,%%   #@*  *%#   @@,           @%           ,@,            @@
+@,           &%   (%&@@,  ,%%  #%,    ,%#  @@,           @%           ,@,            @@
+@,  ,@@@@    &%   %%@@@.  ,%% @)        (@   @@(.   ,&@@@@@%  /((((((#&@,  ,%##*%    @@
+@,  ,@*      &%           ,%% &*   %#   *@@   @@%.   .(&@@%           ,@,  ,@%.      @@
+@,  ,&%####%%&%   (%%%%.  ,%@@*   #@@#   *@@@&%&&@(.   *%@%   (%%%%%%%&@,  ,@@%   #%%@@
+@,  ,%       @%   (&&@@,  ,@@,   #@@ @#   ,@@,           @%           ,@,  ,@@@#   %@@ 
+@,  ,@       @%   %@@@@,  ,@*   #@    @#   *@,           @%           ,@,  ,@ @@%,  #@@
+@@@@@@       @@@@@@  @@@@@@@@@@@@      @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  @@%   &@
+                                                                                *%@@@@#}
+                         {green CREATE PHASER APP v${pkg.version}}
+`)
+console.log(chalk`Run {blue create-phaser-app -h }for available options.
+
+`);
+
+let projectName;
+
+program
+  .version(pkg.version)
+  .arguments('<project-directory>')
+  .usage(`${chalk.green('<project-directory>')} [options]`)
+  .action(function(name) {
+    projectName = name;
+  })
+  .option('-l, --lang <language>', 'Defines language of projects', /^(|js|javascript|ts|typescript|cs|coffeescript)$/i)
+  .parse(process.argv);
+
+  console.log(projectName);

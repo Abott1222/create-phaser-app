@@ -1,24 +1,30 @@
 {
-  "name": "create-phaser-app",
-  "version": "1.0.0",
-  "description": "Boilerplate generator for Phaser framework.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "generator",
-    "phaser",
-    "boilerplate"
+  "private": true,
+  "workspaces": [
+    "packages/*"
   ],
-  "author": "Patryk Poźniak",
-  "license": "MIT",
-  "dependencies": {
-    "chalk": "^2.3.2",
-    "inquirer": "^5.1.0",
-    "npm": "^5.7.1"
+  "scripts": {
+    "format": "prettier --trailing-comma es5 --single-quote --write 'packages/*/*.js' 'packages/*/!(node_modules)/**/*.js'"
   },
-  "bin": {
-    "create-phaser-app": "./index.js"
+  "husky": {
+    "hooks": {
+      "precommit": "lint-staged"
+    }
+  },
+  "devDependencies": {
+    "eslint": "^4.18.2",
+    "husky": "^0.14.3",
+    "lerna": "^2.9.0",
+    "lint-staged": "^7.0.0",
+    "prettier": "^1.11.1"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --trailing-comma es5 --single-quote --write",
+      "git add"
+    ],
+    "yarn.lock": [
+      "git rm --cached"
+    ]
   }
 }
